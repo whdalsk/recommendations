@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공책 페이지</title>
+    <style>
+        @font-face {
+            font-family: 'NanumYeBbeunMinGyeongCe';
+            src: url('/static/fonts/NanumYeBbeunMinGyeongCe.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'leftfont';
+            src: url('/static/fonts/나눔손글씨 왼손잡이도 예뻐.ttf') format('truetype');
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            font-family: 'NanumYeBbeunMinGyeongCe', sans-serif;
+            font-weight: bold;
+        }
+        .open-notebook {
+            width: 1000px;
+            height: 700px;
+            display: flex;
+            background-color: #fff;
+            border: 1px solid #c2c2c2;
+            border-radius: 10px;
+            /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+            background-image:url("https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FBOwEB%2FbtrBHUo6yQP%2FKKIoD94DAhBHsiupNAWVBK%2Fimg.png");
+            background-size: cover;
+            box-shadow: 0 5px 18px -7px rgba(0,0,0,1);
+        }
+        .page {
+            width: 50%;
+            height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .left-page {
+            border-right: 1px solid #c2c2c2;
+            box-shadow: inset -10px 0 8px -8px rgba(0, 0, 0, 0.4);
+            font-family: 'leftfont', sans-serif;
+        }
+        .right-page {
+            border-left: 1px solid #c2c2c2;
+            box-shadow: inset 10px 0 8px -8px rgba(0, 0, 0, 0.4);
+        }
+        .page-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        .bookmark {
+            position: absolute;
+            width: 60px;
+            height: 38px;
+            background-color: #f1e785;
+            border: 0px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 35px;
+            color: #353535;
+            transition: transform 0.2s;
+            box-shadow: 0 5px 18px -7px rgba(0,0,0,0.3);
+        }
+        .bookmark1 {
+            top: 50px;
+            right: -62px;          
+        }
+        .bookmark2 {
+            top: 110px;
+            left: -61px; 
+            border-top-left-radius: 5px; /* 왼쪽 테두리 둥글게 */
+            border-bottom-left-radius: 5px; /* 왼쪽 테두리 둥글게 */
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            background-color: #9cb2ee;
+        }
+        .bookmark3 {
+            top: 170px;
+            right: -62px; 
+            background-color: #a4eb8f;
+        }
+        .fade-in-bck {
+            -webkit-animation: fade-in-bck 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+            animation: fade-in-bck 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+        }
+        @keyframes fade-in-bck {
+            0% {
+                -webkit-transform: translateZ(80px);
+                transform: translateZ(80px);
+                opacity: 0;
+            }
+            100% {
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+                opacity: 1;
+            }
+        }
+        .fade-in-box {
+            display: inline-block;
+            padding: 10px;
+            animation: fadein 2s ease-in-out 1s both;
+            -webkit-animation: fadein 2s ease-in-out 1s both; /* Safari and Chrome */
+            font-size: 50px;
+            margin-bottom: 200px; 
+        }
+        @keyframes fadein {
+            from {                opacity: 0;            }
+            to {                opacity: 1;            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="open-notebook fade-in-bck">
+        <div class="page left-page">
+            <div class="page-content">
+                page2
+            </div>
+            <div class="bookmark bookmark2" onclick="location.href='/page2.do/'">  </div>
+        </div>
+        <div class="page right-page">
+            <div class="page-content">
+                <!-- 여기에 페이지 2의 내용이 들어갑니다 -->
+            </div>
+            <div class="bookmark bookmark1" onclick="location.href='/page1.do/'"> today </div>
+            <div class="bookmark bookmark3" onclick="location.href='/page3.do/'"> memo </div>
+        </div>
+    </div>
+    
+</body>
+</html>

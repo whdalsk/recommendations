@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공책</title>
+    <style>
+        @font-face {
+            font-family: 'NanumYeBbeunMinGyeongCe';
+            src: url('static/fonts/NanumYeBbeunMinGyeongCe.ttf') format('truetype');
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'NanumYeBbeunMinGyeongCe', sans-serif;
+            font-weight: bold;
+        }
+        .notebook-container {
+            width: 500px;
+            height: 700px;
+            perspective: 1500px;
+            position: relative;
+        }
+        .notebook {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+        }
+        .page {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #818181;
+            border-radius: 10px;
+            backface-visibility: hidden;
+            box-shadow: 0 5px 18px -7px rgba(0,0,0,1);
+        }
+        .front-cover {
+            background-image: url('static/images/16.gif');
+            background-size: cover;
+            background-position: center;
+        }
+        .bookmark {
+            position: absolute;
+            width: 60px;
+            height: 38px;
+            background-color: #f1e785;
+            border: 0px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 35px;
+            color: #353535;
+            transition: transform 0.2s;
+            box-shadow: 0 5px 18px -7px rgba(0,0,0,0.5);
+        }
+        /* .bookmark:hover {
+            transform: scale(1.1);
+        } */
+        .bookmark1 {
+            top: 50px;
+            right: -62px;
+        }
+        .bookmark2 {
+            top: 110px;
+            right: -62px;
+            background-color: #9cb2ee;
+        }
+        .bookmark3 {
+            top: 170px;
+            right: -62px;
+            background-color: #a4eb8f;
+        }
+        @-webkit-keyframes flip-out-ver-left {
+            0% {
+                -webkit-transform: rotateY(0);
+                transform: rotateY(0);
+                opacity: 1;
+            }
+            100% {
+                -webkit-transform: rotateY(-70deg);
+                transform: rotateY(-70deg);
+                opacity: 0;
+            }
+        }
+        @keyframes flip-out-ver-left {
+            0% {
+                -webkit-transform: rotateY(0);
+                transform: rotateY(0);
+                opacity: 1;
+            }
+            100% {
+                -webkit-transform: rotateY(-70deg);
+                transform: rotateY(-70deg);
+                opacity: 0;
+            }
+        }
+        .flip-out-ver-left {
+            -webkit-animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+            animation: flip-out-ver-left 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+        }
+    </style>
+</head>
+<body>
+    <div class="notebook-container" id="notebook-container">
+        <div class="notebook" id="notebook">
+            <div class="page page-right front-cover"></div>
+        </div>
+        <div class="bookmark bookmark1" onclick="flipToPage('page1.do')"> today </div>
+        <div class="bookmark bookmark2" onclick="flipToPage('page2.do')"> month </div>
+        <div class="bookmark bookmark3" onclick="flipToPage('page3.do')"> memo </div>
+    </div>
+    <script>
+        function flipToPage(url) {
+            const notebookContainer = document.getElementById('notebook-container');
+            notebookContainer.classList.add('flip-out-ver-left');
+            setTimeout(() => {
+                window.location.href = url;
+            }, 600); // 애니메이션 지속 시간과 일치해야 합니다.
+        }
+    </script>
+</body>
+</html>
